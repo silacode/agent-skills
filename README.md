@@ -8,6 +8,7 @@ Personal agent skills.
 | [native-web-search](skills/native-web-search/SKILL.md) | Run a fast model with native web search and full source URLs. |
 | [subagent](skills/subagent/SKILL.md) | Plan a task, hand it to a gpt-6-sol Herdr sub-agent, verify its work, and send fix-ups; `yolo` auto-answers its questions. |
 | [security-alerts-plan](skills/security-alerts-plan/SKILL.md) | Read all open GitHub security alerts (Dependabot, code scanning, secret scanning, advisories), trace root causes, and write one fix plan. |
+| [review-comment-triage](skills/review-comment-triage/SKILL.md) | Classify review-bot comments as TRUE, TRUE-MINOR, or FALSE with a one-line argument each; optionally reply to FALSE ones after approval. |
 
 ## Prompts
 
