@@ -51,12 +51,12 @@ create() {
   fi
 
   local result wsid
-  result=$(herdr workspace create --cwd "$dir" --label "$label" --focus)
+  result=$(herdr worktree open --cwd "$REPO" --path "$dir" --label "$label" --focus --json)
   wsid=$(jq -er '.result.workspace.workspace_id' <<<"$result") || die "no workspace_id in: $result"
   herdr workspace rename "$wsid" "$wsid · $label" >/dev/null
   herdr workspace list | jq -e --arg id "$wsid" \
-    '.result.workspaces[] | select(.workspace_id==$id) | has("worktree") | not' >/dev/null \
-    || die "workspace $wsid has a worktree object (Herdr nested it)"
+    '.result.workspaces[] | select(.workspace_id==$id) | .worktree.is_linked_worktree' >/dev/null \
+    || die "workspace $wsid is not a linked worktree workspace under the repo workspace"
 
   (cd "$dir" && fnm exec npm ci >/dev/null)
 

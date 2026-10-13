@@ -1,6 +1,6 @@
 ---
 name: new-workspace
-description: "Create or safely close a top-level Herdr workspace backed by a git worktree, including workspace-ID labels, pane cleanup, worktree removal, and local branch deletion. Never use herdr worktree create — it nests the workspace and hides the branch."
+description: "Create or safely close a Herdr workspace backed by a git worktree (nested under the repo workspace), including workspace-ID labels, pane cleanup, worktree removal, and local branch deletion. Never use herdr worktree create — it forks from local HEAD instead of origin/<branch>."
 ---
 
 # Herdr workspace on a git worktree
@@ -23,7 +23,7 @@ Requires `HERDR_ENV=1` (the script checks; if it fails, stop).
 - Exit 0 → report the printed `workspace=`, `label=`, `path=`, `branch=`, `tracking=`, `head=` lines, plus the `.env` line. Done.
 - Non-zero → show the error and stop. Do not retry with different git commands.
 
-What it guarantees: branch exists on GitHub (created there from GitHub's `develop` if missing), worktree is a sibling dir cut from `origin/<branch>` with tracking, Herdr workspace is top-level (no `worktree` object), label is `<id> · <label>`, `.env` copied from the invoking checkout if it's the same repo, `npm ci` ran with the repo's `.nvmrc` Node.
+What it guarantees: branch exists on GitHub (created there from GitHub's `develop` if missing), worktree is a sibling dir cut from `origin/<branch>` with tracking, Herdr workspace is opened with `herdr worktree open` as a linked-worktree row nested under the repo workspace, label is `<id> · <label>`, `.env` copied from the invoking checkout if it's the same repo, `npm ci` ran with the repo's `.nvmrc` Node.
 
 ## Close
 
@@ -43,7 +43,7 @@ The script never deletes the remote branch. If the user wants that, it is a sepa
 
 ## Never
 
-- `herdr worktree create` / `herdr worktree open` — Herdr nests the workspace and hides the branch.
+- `herdr worktree create` — it picks its own checkout path and forks from local HEAD. The script makes the checkout itself and only calls `herdr worktree open` on it.
 - `git worktree add -b <branch>` without `origin/<branch>` — forks from local HEAD.
 - `npm install` — rewrites the lockfile; the script uses `npm ci`.
 - Closing the workspace you are running in, stopping the Herdr server, or touching unrelated workspaces.
