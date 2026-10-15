@@ -1,6 +1,7 @@
 ---
 name: subagent
 description: "Plan a task, get user approval, then delegate execution to a Herdr pi sub-agent (defaults to openrouter/meta/muse-spark-1.3 at xhigh thinking; override with --model); verify its work independently and either close it or send fix-up instructions (max 3 rounds). YOLO mode (leading `yolo` argument) answers the sub-agent's questions instead of relaying them. Use when the user asks to delegate, hand off, or run a task through a sub-agent. Requires HERDR_ENV=1."
+disable-model-invocation: false
 metadata:
   argument-hint: "[yolo] [--model <provider/id[:thinking]>] [--thinking <level>] <task>"
 ---

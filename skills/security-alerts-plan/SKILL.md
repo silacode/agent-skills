@@ -1,6 +1,7 @@
 ---
 name: security-alerts-plan
 description: Fetch all of the repository's open GitHub security alerts (Dependabot, code scanning, secret scanning, and repository security advisories), trace each to its root cause, and write one fix plan. Use when asked to check GitHub security alerts, Dependabot, CodeQL or code scanning, secret scanning, or security advisories, or to plan fixes for flagged vulnerabilities or leaked secrets. Read-only; it never edits code, changes dependencies, or changes alert state on GitHub.
+disable-model-invocation: true
 metadata:
   version: "1.1.0"
   argument-hint: <optional expected counts, e.g. "dependabot 38, code scanning 0, secrets 2">

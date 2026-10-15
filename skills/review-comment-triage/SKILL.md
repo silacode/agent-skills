@@ -1,6 +1,7 @@
 ---
 name: review-comment-triage
 description: Classify review-bot comments (CodeRabbit, Copilot, Greptile, Sentry) using only TRUE, TRUE-MINOR, or FALSE, with a one-line argument each. Use when the user pastes review feedback, gives a PR number, or asks "which of these are real". After triage, optionally reply to confirmed GitHub review comments classified FALSE, but only with explicit user approval.
+disable-model-invocation: true
 metadata:
   version: "1.2.0"
   argument-hint: <pasted comments | PR number | empty to fetch current branch PR>

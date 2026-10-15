@@ -1,6 +1,7 @@
 ---
 name: new-workspace
 description: "Create or safely close a Herdr workspace backed by a git worktree (nested under the repo workspace), including workspace-ID labels, pane cleanup, worktree removal, and local branch deletion. Never use herdr worktree create — it forks from local HEAD instead of origin/<branch>."
+disable-model-invocation: true
 ---
 
 # Herdr workspace on a git worktree

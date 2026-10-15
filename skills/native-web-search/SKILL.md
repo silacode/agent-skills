@@ -1,6 +1,7 @@
 ---
 name: native-web-search
 description: "Trigger native web search. Use when you need quick internet research with concise summaries and full source URLs."
+disable-model-invocation: false
 ---
 
 # Native Web Search
